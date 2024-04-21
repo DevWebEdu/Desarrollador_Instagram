@@ -16,7 +16,7 @@
             </form>
         </div>
         <div class="md:w-1/2 p-10  bg-white    rounded-lg shadow-lg mt-10 md:mt-0" >
-            <form action="{{route('register')}}" method="POST" novalidate>
+            <form action="{{route('post.store')}}" method="POST" novalidate>
                 {{-- AGREGA UN TOKE FICTICIO PARA PRUEBAS *POSIBLE CAMBIO* --}}
                 @csrf
                 {{-- BLOQUE DE TITULO --}}
@@ -54,11 +54,20 @@
                     
                     >{{old('descripcion')}}</textarea>
                     
-                    @error('descipcion')
+                    @error('descripcion')
                         <p class="bg-red-500  text-white my-2 rounded-lg text-sm p-2 text-center ">{{$message}}</p>
                     @enderror
                 </div>
-
+                <div class="md-5">
+                    <input 
+                        name="imagen"
+                        type="hidden"
+                        value="{{old('imagen')}}"
+                    />
+                    @error('imagen')
+                        <p class="bg-red-500  text-white my-2 rounded-lg text-sm p-2 text-center ">{{$message}}</p>
+                    @enderror
+                </div>
                 <input 
                 type="submit"
                 value="Crear Publicacion"

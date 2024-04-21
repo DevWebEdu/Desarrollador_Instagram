@@ -43,4 +43,27 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function likes(){
+        return $this->hasMany(Like::class);
+    }
+    //SEGUIDORES DE UN USUARIO
+    public function followers(){
+        return $this->belongsToMany(User::class,'followers','user_id','follower_id');
+    }
+    //LOS QUE SIGUE EL USUARIO
+    public function followings(){
+        return $this->belongsToMany(User::class,'followers','follower_id','user_id');
+    }
+
+    //COMPROBAR SI UN USUARIO YA SIGUE AL USUARIO EN CUESTION
+    public function siguiendo(User $user){
+        return $this->followers->contains($user->id);
+        }
+
 }

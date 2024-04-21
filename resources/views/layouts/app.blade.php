@@ -7,21 +7,23 @@
     @stack('styles')
     @vite('resources/css/app.css')
     @vite('resources/js/app.js')
-    <title>Laravel</title>
+    <title>Red Social</title>
+    <link rel="shortcut icon" type="image/x-icon" href="medios-de-comunicacion-social.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-
+    <livewire:styles />
 </head>
 
 <body class="bg-gray-100">
     <header class="p-5 border-b bg-white shadow">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-3xl font-black">
+            <a class="text-3xl font-black" href="{{route('home')}}">
+                
                 Devstagram
-            </h1>
+            </a>
 
             {{-- VERIFICANDO CON @AUTh DIRECTIVA SI EL USUARIO ESTA AUTENTICADO PARA MOSTRAR SOLO BOTON DE CERRAR SESION --}}
             @auth
@@ -61,12 +63,14 @@
 
     <main class="container mx-auto mt-10">
         <h2 class="font-black text-center text-3xl mb-10">@yield('titulo')</h2>
+        
         @yield('contenido')
+        </div>
     </main>
     <footer class=" mt-10 text-center p-5 text-gray-500 font-bold uppercase">
         Devstagram - Todos los hechos resevados {{ now()->year }}
     </footer>
-   
+    <livewire:scripts />
 </body>
 
 </html>

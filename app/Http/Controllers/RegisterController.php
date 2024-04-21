@@ -35,7 +35,8 @@ class RegisterController extends Controller
             'name' => $request->name,
             'username' => $request->username,
             'email'=>$request->email,
-            'password'=>Hash::make($request->password)
+            'password'=>Hash::make($request->password),
+            'imagen' => null
        ]);
        /* AUTENTICAR USUARIO */
 
